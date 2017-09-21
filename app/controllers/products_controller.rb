@@ -21,6 +21,15 @@ end
   @product =Product.find(params[:id])
 end
 
+def update
+  @product =Product.find(params[:id])
+  if @product.update(product_params)
+    redirect_to product_path, notice: "your product has been successfully modified"
+  else
+   render :edit
+  end
+end
+
 private
   def product_params
    params.require(:product).permit(:name, :url, :description)

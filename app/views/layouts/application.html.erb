@@ -13,7 +13,11 @@
  <div class="alert alert-info">
    <%=flash[:notice]%>
  </div>
- <%end %> 
+ <%end %>
+ 
+ <% if signed_in? %>
+ <div>Hola,<%= current_user.name %> </div>
+ <% end %>
     <%= yield %>
   </body>
 </html>

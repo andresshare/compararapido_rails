@@ -103,9 +103,8 @@
 
 <div id="subclasses">
   <h2>Direct Known Subclasses</h2>
-  <p class="children"><span class='object_link'><a href="ProductsController.html" title="ProductsController (class)">ProductsController</a></span>, <span class='object_link'><a href="UsersController.html" title="UsersController (class)">UsersController</a></span></p>
+  <p class="children"><span class='object_link'><a href="ProductsController.html" title="ProductsController (class)">ProductsController</a></span>, <span class='object_link'><a href="SessionsController.html" title="SessionsController (class)">SessionsController</a></span>, <span class='object_link'><a href="UsersController.html" title="UsersController (class)">UsersController</a></span></p>
 </div>
-
 
 
 
@@ -114,11 +113,137 @@
 
 
   
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sign_in-instance_method" title="#sign_in (instance method)">#<strong>sign_in</strong>(user)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sign_out-instance_method" title="#sign_out (instance method)">#<strong>sign_out</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="sign_in-instance_method">
+  
+    #<strong>sign_in</strong>(user)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+3
+4
+5
+6</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/application_controller.rb', line 3</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_sign_in'>sign_in</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_cookies'>cookies</span><span class='period'>.</span><span class='id identifier rubyid_permanent'>permanent</span><span class='period'>.</span><span class='id identifier rubyid_signed'>signed</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span><span class='op'>=</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+  <span class='ivar'>@current_user</span> <span class='op'>=</span><span class='id identifier rubyid_user'>user</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sign_out-instance_method">
+  
+    #<strong>sign_out</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+8
+9
+10
+11</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/application_controller.rb', line 8</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_sign_out'>sign_out</span>
+  <span class='id identifier rubyid_cookies'>cookies</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbol'>:user_id</span><span class='rparen'>)</span>
+  <span class='ivar'>@current_user</span> <span class='op'>=</span><span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
 
 </div>
 
       <div id="footer">
-  Generated on Tue Sep 26 21:33:39 2017 by
+  Generated on Tue Sep 26 22:48:11 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.4.2).
 </div>

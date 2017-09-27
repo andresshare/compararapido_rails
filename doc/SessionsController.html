@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
-  Class: UsersController
+  Class: SessionsController
   
     &mdash; Documentation by YARD 0.9.9
   
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  pathId = "UsersController";
+  pathId = "SessionsController";
   relpath = '';
 </script>
 
@@ -36,10 +36,10 @@
       <div id="header">
         <div id="menu">
   
-    <a href="_index.html">Index (U)</a> &raquo;
+    <a href="_index.html">Index (S)</a> &raquo;
     
     
-    <span class="title">UsersController</span>
+    <span class="title">SessionsController</span>
   
 </div>
 
@@ -59,7 +59,7 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><h1>Class: UsersController
+      <div id="content"><h1>Class: SessionsController
   
   
   
@@ -78,7 +78,7 @@
           
             <li class="next"><span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></li>
           
-            <li class="next">UsersController</li>
+            <li class="next">SessionsController</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -98,7 +98,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>app/controllers/users_controller.rb</dd>
+    <dd>app/controllers/sessions_controller.rb</dd>
   </dl>
   
 </div>
@@ -205,18 +205,24 @@
 9
 10
 11
-12</pre>
+12
+13
+14
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/users_controller.rb', line 5</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/sessions_controller.rb', line 5</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
-    <span class='ivar'>@user</span> <span class='op'>=</span><span class='const'><span class='object_link'><a href="User.html" title="User (class)">User</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_user_params'>user_params</span><span class='rparen'>)</span>
-    <span class='kw'>if</span> <span class='ivar'>@user</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
-        <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_root_path'>root_path</span>
+   
+    <span class='id identifier rubyid_user'>user</span><span class='op'>=</span><span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_find_by'>find_by</span><span class='lparen'>(</span><span class='label'>email:</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:email</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='ivar'>@user</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_authenticate'>authenticate</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:password</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_sign_in'>sign_in</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_root_path'>root_path</span>
     <span class='kw'>else</span>
-        <span class='id identifier rubyid_render'>render</span> <span class='id identifier rubyid_new'>new</span>
+      <span class='id identifier rubyid_render'>render</span> <span class='id identifier rubyid_new'>new</span>
     <span class='kw'>end</span>
+
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -239,14 +245,12 @@
 
 
 2
-3
-4</pre>
+3</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/users_controller.rb', line 2</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/sessions_controller.rb', line 2</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span>
-   <span class='ivar'>@user</span><span class='op'>=</span><span class='const'><span class='object_link'><a href="User.html" title="User (class)">User</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> 
 <span class='kw'>end</span></pre>
     </td>
   </tr>

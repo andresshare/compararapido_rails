@@ -1,47 +1,37 @@
 <div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-
-            <p>Products</p>
-
-            <div class="text-right">
-                <% if sign_in? %>
-                    <%=link_to "Publish product",new_product_path, class:"btn btn-primary" %>
-
-            </div>
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1">
+            
+            <div class="products">
+              <% @products.each do |product| %>
+              <div class="product clearfix">
+                <% if product.voted_by? current_user %>
+                  <%= link_to product_vote_path(product), method: :delete, class: "product-upvote upvote-active" do %>
+                    <span class="upvote-arrow"></span>
+                    <span class="upvote-count"><%= product.votes.count %></span>
+                  <% end %>
+                <% else %>
+                  <%= link_to product_vote_path(product), method: :post, class: "product-upvote" do %>
+                    <span class="upvote-arrow"></span>
+                    <span class="upvote-count"><%= product.votes.count %></span>
+                  <% end %>
                 <% end %>
-
-                <table class="table">
-                    <tr>
-                        <th>ID</th>
-                        <th>URL</th>
-                        <th>Description</th>
-                        <th></th>
-                    </tr>
-                    <% @products.each do |product|%>
-                        <tr>
-                            <td>
-                                <%= product.id%>
-                            </td>
-                            <td>
-                                <%=link_to product.name, product %>
-                            </td>
-                            <td>
-                                <%= product.url%>
-                            </td>
-                            <td>
-                                <%= product.description%>
-                            </td>
-                            <td>
-                            <% if sign_in? %>
-                                    <%=link_to "Editar",edit_product_path(product) %>
-                                    <%=link_to "Eliminar",product, method: :delete, data: {confirm:"are you sure?"}  %>
-
-                            <% end %>
-                            </td>
-                        </tr>
-                    <%end%>
-                </table>
+                <% if product.image.exists? %>
+                  <div class="product-img">
+                    <%= image_tag product.image.url(:thumb) %>
+                  </div>
+                <% end %>
+                <div class="product-details">
+                  <span class="product-title"><%= link_to product.name, product %></span>
+                  <span class="product-description"><%= product.description %></span>
+                </div>
+                <div class="product-comments">
+                  <span class="glyphicon glyphicon-comment"></span>
+                  <span class="comment-count"><%= product.comments.count %></span>
+                </div>
+              </div>
+              <% end %>
+            </div>
+          </div>
         </div>
-    </div>
-</div>
+      </div>

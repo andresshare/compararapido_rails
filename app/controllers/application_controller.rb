@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  
   def sign_in(user)
     cookies.permanent.signed[:user_id]=user.id
     @current_user =user
@@ -21,6 +22,16 @@ class ApplicationController < ActionController::Base
     @current_user ||=User.find(cookies.signed[:user_id]) if cookies
   rescue ActiveRecord::RecordNotFound
   end
+
   
   helper_method :current_user
+
+  def private_access
+    
+    redirect_to :login unless signed_in?
+      
+    end
+  end
+
+
 end

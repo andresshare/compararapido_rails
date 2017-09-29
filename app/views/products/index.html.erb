@@ -1,33 +1,47 @@
-<p>products</p>
-<div class="text-right">
-    <%=link_to "Publish product",new_product_path, class:"btn btn-primary" %>
-</div>
-<p>test</p>
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <table class="table">
-                <tr>
-                    <th>ID</th>
-                    <th>URL</th>
-                    <th>Description</th>
-                    <th></th>
-                </tr>
-                <% @products.each do |product|%>
+
+            <p>Products</p>
+
+            <div class="text-right">
+                <% if sign_in? %>
+                    <%=link_to "Publish product",new_product_path, class:"btn btn-primary" %>
+
+            </div>
+                <% end %>
+
+                <table class="table">
                     <tr>
-                        <td><%= product.id%></td>
-                        <td><%=link_to product.name, product %></td>
-                        <td><%= product.url%></td>
-                        <td><%= product.description%></td>
-                        <td>
-                            <%=link_to "Editar",edit_product_path(product) %>
-                            <%=link_to "Eliminar",product, method: :delete, data: {confirm:"are you sure?"}  %>
-                        </td>
+                        <th>ID</th>
+                        <th>URL</th>
+                        <th>Description</th>
+                        <th></th>
                     </tr>
-                <%end%>
-            </table>
+                    <% @products.each do |product|%>
+                        <tr>
+                            <td>
+                                <%= product.id%>
+                            </td>
+                            <td>
+                                <%=link_to product.name, product %>
+                            </td>
+                            <td>
+                                <%= product.url%>
+                            </td>
+                            <td>
+                                <%= product.description%>
+                            </td>
+                            <td>
+                            <% if sign_in? %>
+                                    <%=link_to "Editar",edit_product_path(product) %>
+                                    <%=link_to "Eliminar",product, method: :delete, data: {confirm:"are you sure?"}  %>
+
+                            <% end %>
+                            </td>
+                        </tr>
+                    <%end%>
+                </table>
         </div>
     </div>
 </div>
-
-

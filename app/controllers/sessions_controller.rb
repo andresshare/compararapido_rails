@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  before_action :private_access, only: [:destroy]
+  before_action :public_access, except: [:destroy]
+  
   def new
   end
   
@@ -20,4 +23,7 @@ class SessionsController < ApplicationController
      redirect_to root_path
    end
 
+   def public_access
+     redirect_to root_path if signed_in?
+   end
 end

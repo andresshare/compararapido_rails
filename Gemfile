@@ -36,6 +36,7 @@ gem 'bcrypt', '~> 3.1.7'
  gem 'sqlite3'
 
  gem 'gravatar-ultimate'
+ gem 'annotate'
  #group :production do
 #  gem 'rails_12factor'
 #  gem 'pg'

@@ -1,5 +1,5 @@
-app/models/user.rb 1951c4fd78083cfed76ebf1c55a20b4a6c873d9b
-app/models/product.rb dd0468628887c74b01796c160f8537db4fc7929c
+app/models/user.rb a2b722787b54c5732b8a40e52b3d72fe0a93c5a5
+app/models/product.rb 77629238c69416c64bdd5878d45ba0db282c97a9
 app/helpers/users_helper.rb 4957066bcb0fa49423c7ae0fd83bc3b9e28a5ec7
 app/jobs/application_job.rb 9a24c3e30cfb517943d8774df4695ba794bfd69d
 app/helpers/products_helper.rb 167a17e0e4bcbc69fae1beda5bb272bf29be65da
